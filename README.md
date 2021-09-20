@@ -13,5 +13,5 @@ Create a file Gemfile
 # Bundle install
 Install the gems
 
-# cucumber --iniy
+# cucumber --init
 Create the folder feature and into create more two folder, step_definitions and support

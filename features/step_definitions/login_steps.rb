@@ -1,15 +1,18 @@
 Dado('que eu acesse a página principal') do
-  visit 'https://digitalinnovation.one/sign-in?redirect=%2F'
+ visit 'https://digitalinnovation.one/sign-in?redirect=%2F'
 end
 
 Quando('eu faço login com {string} e {string}') do |email, password|
-  pending # Write code here that turns the phrase above into concrete actions
+  find('input[name=email]').set email
+  find('input[name=password]').set password
+  click_button 'ENTRAR'
 end
 
-Então('devo logar na página principal') do
-  pending # Write code here that turns the phrase above into concrete actions
+Então('devo ser autenticado com sucesso') do
+  expect(page).to have_css("h5", text: 'FANDERSON VALENCIO')
 end
 
-Então('devo ver um modal com a mensagem {string}') do |mensagem|
-  pending # Write code here that turns the phrase above into concrete actions
+Então('devo ver a mensagem na página {string}') do |mensagem|
+  @mensagem = mensagem
+  expect(page).to have_content(@mensagem)
 end
